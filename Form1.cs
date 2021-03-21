@@ -22,12 +22,12 @@ namespace textAnalyze
        
         private void button1_Click(object sender, EventArgs e)
         {
-            string s = @"Data Source = DESKTOP-LK679PR; Initial Catalog=hash;Integrated Security=SSPI";
+            string s = @"Data Source = ""; Initial Catalog=hash;Integrated Security=SSPI";
             SqlConnection con = new SqlConnection(s);
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;         
-            string url = "";
-            var client = new RestClient("URL");
+            string url = textBox1.Text;
+            var client = new RestClient("https://text-analyzer.p.rapidapi.com/analyze-text/text?url="+url+"");
             var request = new RestRequest(Method.GET);
             request.AddHeader("x-rapidapi-key", "KEY");
             request.AddHeader("x-rapidapi-host", "text-analyzer.p.rapidapi.com");
